@@ -17,6 +17,17 @@ function App() {
     setNewItem("");
   };
 
+  const toggleTodo = (id, completed) => {
+    setTodos((currentTodos) => {
+      return currentTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed };
+        }
+        return todo;
+      });
+    });
+  };
+
   return (
     <div className="h-screen w-full max-w-[600px] mx-auto p-4">
       {/* new item form */}
@@ -44,9 +55,11 @@ function App() {
         {todos.map((todo) => {
           return (
             <li key={todo.id} className="text-gray-300 font-bold text-lg my-2">
-              <label htmlFor="">
+              <label htmlFor={todo.id}>
                 <input
+                  id={todo.id}
                   type="checkbox"
+                  onChange={(e) => toggleTodo(todo.id, e.target.checked)}
                   checked={todo.completed}
                   className="mr-2 h-5 w-5"
                 />

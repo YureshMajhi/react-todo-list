@@ -7,10 +7,12 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setTodos((currentTodos) => [
-      ...todos,
-      { id: crypto.randomUUID(), title: newItem, completed: false },
-    ]);
+    setTodos((currentTodos) => {
+      return [
+        ...currentTodos,
+        { id: crypto.randomUUID(), title: newItem, completed: false },
+      ];
+    });
 
     setNewItem("");
   };
@@ -45,8 +47,8 @@ function App() {
               <label htmlFor="">
                 <input
                   type="checkbox"
-                  className="mr-2 h-5 w-5"
                   checked={todo.completed}
+                  className="mr-2 h-5 w-5"
                 />
                 {todo.title}
               </label>

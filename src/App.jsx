@@ -28,6 +28,14 @@ function App() {
     });
   };
 
+  const deleteTodo = (id) => {
+    setTodos((currentTodos) => {
+      return currentTodos.filter((todo) => {
+        return todo.id !== id;
+      });
+    });
+  };
+
   return (
     <div className="h-screen w-full max-w-[600px] mx-auto p-4">
       {/* new item form */}
@@ -65,7 +73,10 @@ function App() {
                 />
                 {todo.title}
               </label>
-              <button className="border-2 border-red-400 text-red-400 ml-4 py-1 px-4 rounded-md bg-[#b6515152] hover:bg-[#b651519c]">
+              <button
+                onClick={() => deleteTodo(todo.id)}
+                className="border-2 border-red-400 text-red-400 ml-4 py-1 px-4 rounded-md bg-[#b6515152] hover:bg-[#b651519c]"
+              >
                 Delete
               </button>
             </li>

@@ -3,7 +3,7 @@ import React from "react";
 const TodoItem = ({ completed, id, title, toggleTodo, deleteTodo }) => {
   return (
     <li className="text-gray-300 font-bold text-lg my-2">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center bg-[#505c6e79] p-2 rounded-md">
         <label htmlFor={id}>
           <input
             id={id}

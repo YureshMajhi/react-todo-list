@@ -20,6 +20,7 @@ const Form = ({ addTodo }) => {
         <input
           type="text"
           id="item"
+          required
           className="p-1 rounded-md border-[1px] border-[#5ebae2] bg-[#016595] font-bold"
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}

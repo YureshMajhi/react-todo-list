@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS");
+
+    if (localValue) return JSON.parse(localValue);
+
+    return [];
+  });
 
   const addTodo = (title) => {
     setTodos((currentTodos) => {
@@ -13,6 +19,10 @@ function App() {
       ];
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(todos));
+  }, [todos]);
 
   const toggleTodo = (id, completed) => {
     setTodos((currentTodos) => {
